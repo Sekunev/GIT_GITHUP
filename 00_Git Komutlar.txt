@@ -1,0 +1,105 @@
+git init  #  yeni bir yerel repo oluşturmak içindir. .git dosyası oluşturur. yani klasörü git repostory yapar. git tarafından kontrol edildiğini gösterir. 
+	    .git iptal etmek için sileriz. rm -rf
+
+# Git, ayar olarak tanımladığınız değerleri commit
+# vb işlemlerde otomatik olarak kullanır. 
+# Bu ayarların değerini belirlemek için bir defalığına komut satırında aşağıdaki komut yazılır.
+git config --global user.name "ali özgür"  
+git config --global user.email "ali.ozgur@example.com"
+
+# bu ayarları listelemek için:
+git config --global -l
+
+git status # reponuzun durumunu görmek için
+
+git add limonata.txt  # limonata.txt stage area ya aktarır.
+git add . # Tüm dosyaları versiyon olarak sakla.
+
+git rm --cached  # staging e gönderileni geri alır.
+git rm --cached file3.txt  # add 'ın tersini yaptı yeşilden kırmızıya
+git restore --staged  # cached ile aynı işlemi yapar.
+
+git log  # Author: sekune <ahlatlipost@gmail.com>
+	 # Date:   Thu Jun 23 22:29:16 2022 +0300
+git log --oneline # tek satırla listeler
+
+git commit -m ”message”  # Dosyaları sahneye gönder
+git commit -am ”message” # İzlenen tüm dosyaları ekleyin ve onaylayın
+git commit --amend 	 # taahhüt mesajını değiştir
+  
+git help  # komutları görmek için
+
+touch file1.txt  #  let’s create a new file in our project folder
+
+vim file1.txt  # let’s edit this file
+
+git status  #  let’s check the status of our project
+
+git checkout 34506  # commit edilen dosyayı aldı eski haline (34506) geri getirdi 
+
+-------
+git clone https://github.com/Sekunev/my-demo-repo.git # git repodaki url yi yerele kolonlama. 
+
+git clone address  # yeni bir uzak repo oluşturmak ve onu yerel reponuza bağlamak
+		     için (Github/Bitbucket vb. üzerinde bir uzak repo oluşturduktan sonra)-a
+
+git branch  # mevcut branch kontrol edilir.
+git branch -r remote branc listelenir.
+git branch -a remote ve lokal brancları listeler.
+
+git branch demobranch  # demobranch oluşturuldu.
+
+git branch -m main  # master i main e çevirdi.
+
+git branch -d front-end # local branc sil. front-end brancını sil
+git branch -D back-end # local branc sil. front-end brancını sil
+git branch -a back-end # tüm brancları sil
+-----------
+
+git checkout -b Branch name # yeni branh oluşturr ve o branh a geç.
+
+git checkout branch name # branc name'ına geçiş yapılır.
+git switch brancname  # branc name'ına geçiş yapılır.
+
+git push origin demobranch # yerel repo içeriğimizi uzak repoya yükleyecektir.
+
+git push -f origin main # zorla push eder tavsiye edilmez. error: failed to push some refs to 'https:// ... hatası alındığında.
+
+git push -u origin main # error: failed to push some refs to 'https:// ... hatası alındığında.
+UYARI : remote repomuz yenı ve bos bır repo oldugu ıcın, ıcınde herhangı bır branch da bulunmuyor. bu sebeple pushlama yapılırken upstream yanı kısaca -ukomutu kullanılıyor.
+
+git push origin -delete # Remote branch ı siler  
+
+
+git pull origin master # yerel depomuzu güncellemek için. fetch+merge birleşimi. 
+
+git reset --hard HEAD
+
+git merge  # main brancındaki değişiklikleri merc eder.
+
+git merge dev-1   # dev-1 branchındaki içeriği master a kaydeder. 
+
+-----------------
+
+git fetch # Değişiklikleri uzak depodan yerel deponuza indirin
+git diff main origin/main  # Yerel depodaki değişiklikleri görün
+
+git remote set-url origin https://token@url  # tokenlama sytaxı
+kullanıcı adı ve şifre = token number
+
+cursor un alt satırda çıkmasını engellemek için:
+echo $PS1 komutu çalıştırıldığında görülen son komutlar yani "\n" silinmesi gerekli kısaca aşağıdaki komut sorunu çözer.
+export PS1="\[\033]0;$TITLEPREFIX:$PWD\007\]\n\[\033[32m\]\u@\h \[\033[35m\]$MSYSTEM \[\033[33m\]\w\[\033[36m\]`__git_ps1`\[\033[0m\]$"
+
+git config --global init.defaultBranch main  # default Brancı main yapar. 
+----
+
+git remote add origin "Repo address"  # connect to remote repo. Uzakrepo ekleme.
+
+git remote add upstream <owner-repo-URL>  # foklanmış dosyanın uzakrepo ekleme
+
+git pull upstream main # tüm değişiklikleri orjinal depodan indir.
+
+git remote -v  # yerel ve remote repo bağlanıp bağlanmadığını kontrol.
+
+git pull --rebase origin [branch] # push yaparken hata alındığında pull yapıyoruz.
